@@ -23,17 +23,19 @@ void main() {
             },
           ),
         ),
+    'A basic file server implementation. Allows reading/writing to the tracked roots.',
   );
 }
 
-/// An basic file server implementation.
+/// A basic file server implementation.
 ///
 /// Only allows reading/writing to the tracked [roots], and only by utf8 string.
 final class SimpleFileSystemServer extends MCPServer
     with LoggingSupport, RootsTrackingSupport, ToolsSupport {
-  SimpleFileSystemServer.fromStreamChannel(super.channel)
+  SimpleFileSystemServer.fromStreamChannel(super.channel, String instructions)
     : super.fromStreamChannel(
         implementation: Implementation(name: 'file system', version: '0.0.1'),
+        instructions: instructions,
       );
 
   @override
